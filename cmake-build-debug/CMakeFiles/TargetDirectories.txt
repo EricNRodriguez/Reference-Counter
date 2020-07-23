@@ -1,0 +1,3 @@
+/home/eric/c/COMP2017/tasks/tasks_2/rc/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/eric/c/COMP2017/tasks/tasks_2/rc/cmake-build-debug/CMakeFiles/rc.dir
+/home/eric/c/COMP2017/tasks/tasks_2/rc/cmake-build-debug/CMakeFiles/edit_cache.dir
