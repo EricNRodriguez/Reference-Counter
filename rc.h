@@ -11,7 +11,7 @@
 
 struct rc_entry {
     size_t count;
-    size_t* dep_list; /* im guessing this is re_entrys that it references itself */
+    size_t* dep_list; 
     size_t n_deps;
     size_t dep_capacity;
 };
