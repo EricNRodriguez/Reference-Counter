@@ -1,9 +1,6 @@
 #include "rc.h"
 #include <stdio.h>
 #include <string.h>
-//https://medium.com/@elliotchance/strong-vs-weak-references-70356d37dfd2
-//https://www.educative.io/courses/a-quick-primer-on-garbage-collection-algorithms/jR8ml
-
 
 struct reference_graph {
     struct graph_entry *allocations;
@@ -286,59 +283,3 @@ void rc_cleanup() {
     graph = NULL;
     return;
 }
-
-//
-//int main() {
-//
-//    // example 1 -----------------------------------------------------
-//    struct strong_ref* m = rc_alloc(NULL, sizeof(int), NULL);
-//    *((int*)m->ptr) = 100;
-//    printf("%d\n", *((int*)m->ptr));
-//
-//
-//    struct weak_ref w = rc_downgrade(m);
-//    printf("weak reference %zu\n", w.entry_id);
-//
-//
-//    //check if w is invalid
-//    struct strong_ref* p = rc_upgrade(w);
-//    if(p == NULL) {
-//        puts("Reference has been removed");
-////        printf("%p \n", m->ptr); // notice that the ptr has been nulled since its invalid
-//    }
-//
-//    rc_cleanup();
-////
-////    // example 2 ------------------------------------------------------------------------------------
-//    struct strong_ref* m2 = rc_alloc(NULL, sizeof(int), NULL);
-//    struct strong_ref* a2 = rc_alloc(m2->ptr, 0, NULL);
-//    *((int*)m2->ptr) = 2;
-//    rc_downgrade(m2); // decraments by 1
-//    *((int*)a2->ptr) = 0;
-//    rc_downgrade(a2); // deallocates
-//    rc_cleanup();
-//
-////    // example 3 ------------------------------------------------------------------------------------
-//    struct test {
-//        struct strong_ref *x;
-//    };
-//    struct strong_ref* m3 = rc_alloc(NULL, sizeof(struct test *), NULL);
-//    struct strong_ref* m4 = rc_alloc(NULL, sizeof(int), m3); //<-- x is dependent on m
-//    printf("%p\n", m4);
-//    rc_downgrade(m3); //<-- Deallocates m and m->ptr->p, should return an invalid weak_ref
-//
-//    rc_cleanup();
-//
-//    // ---------------------- example 4 ---------------------------------------------------
-//    struct strong_ref* m5 = rc_alloc(NULL, sizeof(int), NULL);
-//    struct strong_ref* a = rc_alloc(m5->ptr, 0, NULL);
-//
-//    struct weak_ref w5 = rc_downgrade(a); //<-- reduces the count by 1
-//
-//    a = rc_upgrade(w5); //<--- Increments the count by 1
-//    rc_downgrade(a);
-//    struct weak_ref x = rc_downgrade(m5); //<-- Deallocates m and a, should return an invalid weak_ref
-//    printf("%zu\n", x.entry_id);
-//    rc_cleanup();
-//    return 0;
-////}
